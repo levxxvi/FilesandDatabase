@@ -8,11 +8,9 @@ public class DatabaseHandler {
     private static Statement stmt = null;
     public static DatabaseHandler handler;
 
-    public String directory;
 
     public DatabaseHandler(){
         createConnection();
-        createTable(directory);
     }
 
     public static DatabaseHandler getHandler(){

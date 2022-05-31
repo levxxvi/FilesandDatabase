@@ -6,6 +6,7 @@ import org.apache.commons.io.FilenameUtils;
 
 import java.io.File;
 import java.io.FileFilter;
+import java.util.Scanner;
 
 import static org.apache.commons.io.FileUtils.byteCountToDisplaySize;
 import static org.apache.commons.io.FileUtils.sizeOf;
@@ -17,10 +18,14 @@ public class Main {
 
     public static void main(String[] args) {
         handler = DatabaseHandler.getHandler();
+
+        System.out.println("Please type in your directory path");
+        Scanner scanner = new Scanner(System.in);
         File userDir = FileUtils.getUserDirectory();
         addDir(userDir);
     }
 
+    //create table here???
     public static void addDir(File userDir){
         File[] files = listFiles(userDir);
         for (File file: files) {
@@ -33,6 +38,7 @@ public class Main {
         }
     }
 
+    //add a param for table name
     public static void addFile(String fileName, String path, String extension, String sizeBytes){
         String qu = "INSERT INTO MEMBER VALUES (" +
                 "'" + fileName + "'," +
