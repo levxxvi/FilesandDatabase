@@ -34,10 +34,10 @@ public class DatabaseHandler {
                 System.out.println("Table " + TABLE_NAME + " exists");
             }else{
                 String statement = "CREATE TABLE " + TABLE_NAME + " ("
-                        + "filename varchar(200) primary key, \n"
+                        + "fileName varchar(200) primary key, \n"
                         + "path varchar(200), \n"
                         + "extension varchar(200), \n"
-                        + "sizeinbytes varchar(200))";
+                        + "sizeBytes varchar(200))";
                 System.out.println(statement);
                 stmt.execute(statement);
             }
