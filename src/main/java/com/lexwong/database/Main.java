@@ -21,6 +21,7 @@ public class Main {
 
         System.out.println("Please type in your directory path");
         Scanner scanner = new Scanner(System.in);
+        //turn string into file? maybe?
         File userDir = FileUtils.getUserDirectory();
         addDir(userDir);
     }
