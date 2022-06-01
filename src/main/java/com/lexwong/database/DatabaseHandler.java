@@ -22,8 +22,8 @@ public class DatabaseHandler {
         }
     }
 
-    public void createTable(String directory) {
-        String TABLE_NAME = directory;
+    public void createTable(String name) {
+        String TABLE_NAME = name;
         try{
             stmt = conn.createStatement();
             DatabaseMetaData dmn = conn.getMetaData();

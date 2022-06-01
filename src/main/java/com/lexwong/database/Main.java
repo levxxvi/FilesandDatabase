@@ -63,10 +63,10 @@ public class Main {
             //String path = getFullPath(fileName);
             //String path = getPath(fileName);
             String path = String.valueOf(file);
-
             String extension = getExtension(fileName);
-            long size =  sizeOf(file);
+            long size = sizeOf(file);
             String sizeBytes = byteCountToDisplaySize(size);
+
             addFile(tableName ,fileString, path, extension, sizeBytes);
 
             System.out.println("file name is " + fileString + "\n"
