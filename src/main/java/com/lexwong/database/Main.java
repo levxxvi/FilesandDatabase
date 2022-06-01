@@ -10,8 +10,7 @@ import java.util.Scanner;
 
 import static org.apache.commons.io.FileUtils.byteCountToDisplaySize;
 import static org.apache.commons.io.FileUtils.sizeOf;
-import static org.apache.commons.io.FilenameUtils.getExtension;
-import static org.apache.commons.io.FilenameUtils.getFullPath;
+import static org.apache.commons.io.FilenameUtils.*;
 
 public class Main {
     public static DatabaseHandler handler;
@@ -21,21 +20,48 @@ public class Main {
 
         System.out.println("Please type in your directory path");
         Scanner scanner = new Scanner(System.in);
-        //turn string into file? maybe?
-        File userDir = FileUtils.getUserDirectory();
-        addDir(userDir);
-    }
+        String input = scanner.nextLine();
+        System.out.println("Your input was " + input);
+        File dir = new File(input);
 
-    //create table here???
-    public static void addDir(File userDir){
-        File[] files = listFiles(userDir);
-        for (File file: files) {
+        System.out.println("Please type in a table name");
+        Scanner scanner1 = new Scanner(System.in);
+        String tableName = scanner.nextLine();
+        System.out.println("Your table name is " + tableName);
+        addDir(tableName ,dir);
+
+        File[] test = listFiles(dir);
+        for (File file: test){
+            System.out.println(file);
             String fileName = String.valueOf(file);
+            String fileString = getBaseName(fileName);
+
             String path = getFullPath(fileName);
             String extension = getExtension(fileName);
             long size =  sizeOf(file);
             String sizeBytes = byteCountToDisplaySize(size);
-            addFile(fileName, path, extension, sizeBytes);
+
+            System.out.println("file name is " + fileString + "\n"
+                    + "path is " + path + "\n"
+                    + "extension is " + extension + "\n"
+                    + "size is " + sizeBytes + "\n");
+        }
+
+    }
+
+    //create table here???
+    public static void addDir(String tableName ,File userDir){
+        handler.createTable(tableName);
+
+        File[] files = listFiles(userDir);
+        for (File file: files) {
+            String fileName = String.valueOf(file);
+            String fileString = getBaseName(fileName);
+            String path = getFullPath(fileName);
+            String extension = getExtension(fileName);
+            long size =  sizeOf(file);
+            String sizeBytes = byteCountToDisplaySize(size);
+            addFile(fileString, path, extension, sizeBytes);
         }
     }
 

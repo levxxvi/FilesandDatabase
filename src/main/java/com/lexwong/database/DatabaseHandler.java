@@ -22,7 +22,7 @@ public class DatabaseHandler {
         }
     }
 
-    private void createTable(String directory) {
+    public void createTable(String directory) {
         String TABLE_NAME = directory;
         try{
             stmt = conn.createStatement();
