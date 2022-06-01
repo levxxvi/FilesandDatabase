@@ -26,17 +26,18 @@ public class Main {
 
         System.out.println("Please type in a table name");
         Scanner scanner1 = new Scanner(System.in);
-        String tableName = scanner.nextLine();
+        String tableName = scanner1.nextLine();
         System.out.println("Your table name is " + tableName);
         addDir(tableName ,dir);
 
+        /*
         File[] test = listFiles(dir);
         for (File file: test){
             System.out.println(file);
             String fileName = String.valueOf(file);
             String fileString = getBaseName(fileName);
 
-            String path = getFullPath(fileName);
+            String path = String.valueOf(file);
             String extension = getExtension(fileName);
             long size =  sizeOf(file);
             String sizeBytes = byteCountToDisplaySize(size);
@@ -46,6 +47,7 @@ public class Main {
                     + "extension is " + extension + "\n"
                     + "size is " + sizeBytes + "\n");
         }
+         */
 
     }
 
@@ -57,17 +59,26 @@ public class Main {
         for (File file: files) {
             String fileName = String.valueOf(file);
             String fileString = getBaseName(fileName);
-            String path = getFullPath(fileName);
+
+            //String path = getFullPath(fileName);
+            //String path = getPath(fileName);
+            String path = String.valueOf(file);
+
             String extension = getExtension(fileName);
             long size =  sizeOf(file);
             String sizeBytes = byteCountToDisplaySize(size);
-            addFile(fileString, path, extension, sizeBytes);
+            addFile(tableName ,fileString, path, extension, sizeBytes);
+
+            System.out.println("file name is " + fileString + "\n"
+                    + "path is " + path + "\n"
+                    + "extension is " + extension + "\n"
+                    + "size is " + sizeBytes + "\n");
         }
     }
 
     //add a param for table name
-    public static void addFile(String fileName, String path, String extension, String sizeBytes){
-        String qu = "INSERT INTO MEMBER VALUES (" +
+    public static void addFile(String tableName, String fileName, String path, String extension, String sizeBytes){
+        String qu = "INSERT INTO " + tableName + " VALUES (" +
                 "'" + fileName + "'," +
                 "'" + path + "'," +
                 "'" + extension + "'," +
