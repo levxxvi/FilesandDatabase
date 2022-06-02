@@ -82,7 +82,8 @@ public class Main {
                 "'" + fileName + "'," +
                 "'" + path + "'," +
                 "'" + extension + "'," +
-                "'" + sizeBytes + "'," + ")";
+                "'" + sizeBytes + "'" + ")";
+        System.out.println(qu);
         handler.execAction(qu);
     }
 
