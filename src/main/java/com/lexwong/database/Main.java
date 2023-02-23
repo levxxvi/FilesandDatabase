@@ -51,7 +51,7 @@ public class Main {
 
     }
 
-    //create table here???
+    //create table here
     public static void addDir(String tableName ,File userDir){
         handler.createTable(tableName);
 
